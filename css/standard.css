@@ -1,0 +1,93 @@
+body {
+	background-color: hsla(199, 65%, 80%, 1);
+	margin: 0px;
+	overflow: hidden;
+}
+
+#workspace {
+	position: relative;
+	width: 90%;
+	margin: 5% auto;
+}
+
+.AR16x9 {
+	padding-top: 56.25%;
+}
+
+.AR16x3 {
+	padding-top: 18.75%;
+}
+
+.AR4x3 {
+	padding-top: 75%;
+}
+
+
+.programContainer{
+	display: inline-block;
+	position: relative;
+	width: 75%;
+}
+
+.program {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: hsla(185, 41%, 61%, 1);
+	border: black 2px solid;
+	border-radius: 2%;
+}
+
+#cameraSet{
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 22%;
+	padding-left: 5px;
+}
+
+.cameraContainer{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.camera {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: hsla(205, 55%, 70%, 1);
+	border: black 2px solid;	
+	border-radius: 5%;
+}
+
+.micContainer {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+#mic1 {left: 0;}
+#mic2 {left: 35%;}
+#mic3 {right: 0;}
+
+.microphone {
+	position: absolute;
+	display: table-cell;
+	top: 5px;
+	bottom: 0;
+	width: 30%;
+	background-color: hsla(63, 86%, 73%, 1);
+	border: black 2px solid;
+	border-radius: 10%;
+	text-align: center;
+	vertical-align: middle;
+	font-family: sans-serif;
+	font-weight: bolder;
+	font-size: 1.5vh;
+}

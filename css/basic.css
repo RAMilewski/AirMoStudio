@@ -1,0 +1,131 @@
+body {
+	background-color: hsla(0, 0%, 40%, 1);
+	margin: 0px;
+	overflow: hidden;
+}
+
+#workspace {
+	position: relative;
+	width: 90%;
+	margin: 5% auto;
+}
+
+.AR16x9 {
+	padding-top: 56.25%;
+}
+
+.AR16x3 {
+	padding-top: 18.75%;
+}
+
+.AR4x3 {
+	padding-top: 75%;
+}
+
+
+.programContainer{
+	display: inline-block;
+	position: relative;
+	width: 75%;
+}
+
+.program {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: hsla(185, 41%, 21%, 1);
+	border: black 4px solid;
+	border-radius: 2%;
+}
+
+.layer  {
+	width: 100%;
+	height: 100%;
+	border-radius: 2%;
+}
+
+
+
+#layer1 {z-index: 1;}
+#layer2 {z-index: 2;}
+#layer3 {z-index: 3;}
+#layer4 {z-index: 4;}
+#layer5 {z-index: 5;} 
+
+.slide, .overlay {
+	display: inline-block;
+	width: 12%;
+	margin: 20px auto 0 auto;
+	border: black 1px solid;	
+	border-radius: 5%;
+}
+
+.activeLayer {
+	border: hsla(142,100%,70%,1) 4px solid;
+}
+
+
+#cameraSet{
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 22%;
+	padding-left: 5px;
+}
+
+.cameraContainer{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.camera {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: hsla(205, 55%, 70%, 1);
+	border: black 2px solid;	
+	border-radius: 5%;
+}
+
+.activeCamera {
+	border: hsla(142, 100%, 60% ,1) 4px solid;
+}
+
+.micContainer {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+#mic0 {left: 0;}
+#mic1 {left: 34%;}
+#mic2 {right: 0;}
+
+.microphone {
+	position: absolute;
+	display: table-cell;
+	top: 5px;
+	bottom: 0;
+	width: 30%;
+	background-color: hsla(0, 0%, 80%, 1);
+	border: black 2px solid;
+	border-radius: 10%;
+	text-align: center;
+	vertical-align: middle;
+	font-family: sans-serif;
+	font-weight: bolder;
+	font-size: 1.5vh;
+}
+
+.activeMicrophone {
+	border: hsla(142, 100%, 70%, 1) 4px solid;
+	background-color: hsla(142, 80%, 50%, 1);
+}
+
+

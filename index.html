@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+	<head>
+		<title>VideoStudio</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link href="css/basic.css" rel="stylesheet" title="Basic">
+		<!-- <link href="css/experimental.css" rel="alternate stylesheet" title="Test"> -->
+		
+	</head>
+	<body>
+		<div id="workspace">
+			<div class="programContainer">
+				<div class="AR16x9">
+					<div id="pgm" class="program" id="program">
+						<img id="layer1" class="layer" src="./slides/slide1.png"/>
+					</div>
+				</div>
+			</div>
+			<div id="cameraSet">
+				
+				<div class="cameraContainer">
+					<div class="AR16x9">
+						<div id="cam1" class="camera"></div>
+					</div>
+				</div>
+				
+				<div class="cameraContainer">
+					<div class="AR16x9">
+						<div id="cam2" class="camera"></div>
+					</div>
+				</div>
+				
+				<div class="cameraContainer">
+					<div class="AR16x9">
+						<div id="cam3" class="camera"></div>
+					</div>
+				</div>
+				
+				<div class="micContainer">
+					<div class="AR16x3">
+						<div id="mic0" class="microphone"><p>Follow</p></div>
+						<div id="mic1" class="microphone"><p>Mic 1</p></div>
+						<div id="mic2" class="microphone"><p>Mic 2</p></div>
+					</div>
+				</div>
+			</div>
+			
+			<div id=overlayContainer>
+				<img class="overlay" id="overlay1" src="./overlays/overlay1.png">
+				<img class="overlay" id="overlay2" src="./overlays/overlay2.png">
+				<img class="overlay" id="overlay3" src="./overlays/overlay3.png">
+				<img class="overlay" id="overlay4" src="./overlays/overlay4.png">
+				<img class="overlay" id="overlay5" src="./overlays/overlay5.png">
+				<img class="overlay" id="overlay6" src="./overlays/overlay6.png">
+			</div>
+			
+			<div id=slideContainer>
+				<img class="slide" id="slide1" src="./slides/slide1.png">
+				<img class="slide" id="slide2" src="./slides/slide2.png">
+				<img class="slide" id="slide3" src="./slides/slide3.png">
+				<img class="slide" id="slide4" src="./slides/slide4.png">
+				<img class="slide" id="slide5" src="./slides/slide5.png">
+				<img class="slide" id="slide6" src="./slides/slide6.png">
+			</div>
+			
+		</div>
+		
+	</body>
+
+	<script src="./js/jquery-2.1.3.min.js"></script>
+	<script src="./js/VideoStudio-0.1.js"></script>
+	
+</html>
