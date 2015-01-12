@@ -9,25 +9,25 @@
 $( document ).ready(function() {
 	
 	var microphone = 0;
-var camera     = 0;
-var layer0source = "";
-var layer1source = "";
-var layer2source = "";
-var layer3source = "";
-var layer4source = "";
-var layer5source = "";
-var canvas = document.getElementById("programCanvas");
-var ctx = canvas.getContext("2d");
-var image = document.getElementById('source');
-/*
-ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
-
-function redraw(){
-	ctx.drawImage(layer0source, 0, 0, 100%, 100%, 0, 0, 100%, 100%);
-	ctx.drawImage(layer4source, 0, 0, 100%, 100%, 0, 0, 100%, 100%);
-}
-
-*/
+	var camera     = 0;
+	var layer0source = "";
+	var layer1source = "";
+	var layer2source = "";
+	var layer3source = "";
+	var layer4source = "";
+	var layer5source = "";
+	var canvas = $("#programCanvas");
+	var ctx = canvas.getContext("2d");
+	var image = document.getElementById('source');
+	/*
+	ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
+	
+	function redraw(){
+		ctx.drawImage(layer0source, 0, 0, 100%, 100%, 0, 0, 100%, 100%);
+		ctx.drawImage(layer4source, 0, 0, 100%, 100%, 0, 0, 100%, 100%);
+	}
+	
+	*/
 	
 	//Initialize in audo-follow mode
 	$("#mic0").addClass("activeMicrophone");
