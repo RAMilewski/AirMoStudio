@@ -16,7 +16,7 @@ var layer2source = "";
 var layer3source = "";
 var layer4source = "";
 var layer5source = "";
-var canvas = document.getElementById("programCanvas");
+var canvas = $("#programCanvas");
 var ctx = canvas.getContext("2d");
 var image = document.getElementById('source');
 /*
