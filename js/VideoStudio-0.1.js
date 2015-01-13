@@ -29,7 +29,6 @@ $( document ).ready(function() {
 	}
 	
 	*/
-
 	
 	//Initialize in audo-follow mode
 	$("#mic0").addClass("activeMicrophone");
