@@ -6,8 +6,12 @@ body {
 
 #workspace {
 	position: relative;
-	width: 90%;
-	margin: 5% auto;
+	width: 80%;
+	margin: 25px auto;
+}
+
+.hidden {
+	display: none;
 }
 
 .AR16x9 {
@@ -35,7 +39,6 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: hsla(185, 41%, 21%, 1);
 	border: black 4px solid;
 	border-radius: 2%;
 }
@@ -46,24 +49,21 @@ body {
 	border-radius: 2%;
 }
 
-
-
-#layer1 {z-index: 1;}
-#layer2 {z-index: 2;}
-#layer3 {z-index: 3;}
-#layer4 {z-index: 4;}
-#layer5 {z-index: 5;} 
-
-.slide, .overlay {
+.slide, .overlay, .clip {
 	display: inline-block;
-	width: 12%;
+	width: 11.8%;
 	margin: 20px auto 0 auto;
-	border: black 1px solid;	
+	border: transparent 3px solid;	
 	border-radius: 5%;
 }
 
+#slide0, #overlay0, #clip0 {
+	background: url("./blankLabel.png");
+	background-size: contain;
+}
+
 .activeLayer {
-	border: hsla(142,100%,70%,1) 4px solid;
+	border: hsla(142,100%,70%,1) 3px solid;
 }
 
 
@@ -72,7 +72,7 @@ body {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 22%;
+	width: 21%;
 	padding-left: 5px;
 }
 
@@ -88,10 +88,17 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: hsla(205, 55%, 70%, 1);
-	border: black 2px solid;	
+	border: transparent 4px solid;
 	border-radius: 5%;
 }
+
+.cameraShot {
+	display: inline-block;
+	width: 100%;
+	border: transparent 4px solid;
+	border-radius: 5%;
+}
+
 
 .activeCamera {
 	border: hsla(142, 100%, 60% ,1) 4px solid;
@@ -114,7 +121,7 @@ body {
 	bottom: 0;
 	width: 30%;
 	background-color: hsla(0, 0%, 80%, 1);
-	border: black 2px solid;
+	border: black 3px solid;
 	border-radius: 10%;
 	text-align: center;
 	vertical-align: middle;
@@ -124,7 +131,7 @@ body {
 }
 
 .activeMicrophone {
-	border: hsla(142, 100%, 70%, 1) 4px solid;
+	border: hsla(142, 100%, 70%, 1) 3px solid;
 	background-color: hsla(142, 80%, 50%, 1);
 }
 
