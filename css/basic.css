@@ -1,5 +1,5 @@
 body {
-	background-color: hsla(0, 0%, 40%, 1);
+	background: url("./grain.png"), linear-gradient(to bottom, #424F5A, #6A7B86);
 	margin: 0px;
 	overflow: hidden;
 }
@@ -55,11 +55,6 @@ body {
 	margin: 20px auto 0 auto;
 	border: transparent 3px solid;	
 	border-radius: 5%;
-}
-
-#slide0, #overlay0, #clip0 {
-	background: url("./blankLabel.png");
-	background-size: contain;
 }
 
 .activeLayer {
@@ -124,10 +119,10 @@ body {
 	border: black 3px solid;
 	border-radius: 10%;
 	text-align: center;
-	vertical-align: middle;
 	font-family: sans-serif;
 	font-weight: bolder;
-	font-size: 1.5vh;
+	font-size: 1vw;
+	vertical-align: middle;
 }
 
 .activeMicrophone {
