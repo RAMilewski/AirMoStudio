@@ -8,10 +8,18 @@
  
 $( document ).ready(function() {
 	
-	var format = new Object;
-	format.name = "360p";
 	
-	var microphone = camera = slide = overlay = 0;
+	//JQuery UI initialization
+	
+	$( "#tabs" ).tabs();
+	
+	// End JQuery UI init
+	
+	
+	var microphone = 0;
+	var camera = 0;
+	var slide = 0;
+	var overlay = 0;
 	var lastCamera = -1;
 	
 	var canvas = document.getElementById('pgmCanvas');
@@ -22,26 +30,33 @@ $( document ).ready(function() {
 	var layer4 = document.getElementById('layer4');
 	layer4.valid = false;
 	
-	switch (format.name) {
-		case "360p":
-			format.width = 640;
-			format.height = 360;
-		break;
+	var format = new Object();
+	
+	function setFormat(theFormat) {
 		
-		case "720p":
-			format.width = 1280;
-			format.height = 720;
-		break;
+		format.name = theFormat;
 		
-		case "1080p":
-			format.width = 1920;
-			format.height = 1080;
+		switch (format.name) {
+			case "360p":
+				format.width = 640;
+				format.height = 360;
+			break;
+			
+			case "1080p":
+				format.width = 1920;
+				format.height = 1080;
+			break;
+				
+			default:  // 720p
+				format.width = 1280;
+				format.height = 720;
+			break;
+		}
+		$(".layer").attr("height", format.height);
+		$(".layer").attr("width", format.width);
 	}  
 	
-	$(".layer").attr("height", format.height);
-	$(".layer").attr("width", format.width);
-	
-	var frame = 0 ;
+	var frame = 0;
 	
 	layer1.onload = function(){
 			layer1.valid = true;
@@ -56,7 +71,7 @@ $( document ).ready(function() {
 			ctx.clearRect(0, 0, format.width, format.height);
 			
 			if (layer1.valid) {
-				ctx.drawImage(layer1, 0, 0, layer1.width, layer1.height, 0, 0, format.width, format.height);
+				ctx.drawImage(layer1, 0, 0, 1280, 720, 0, 0, format.width, format.height);
 			}
 			
 			if (layer2.readyState === layer2.HAVE_ENOUGH_DATA) {
@@ -64,7 +79,7 @@ $( document ).ready(function() {
 			}
 			
 			if (layer4.valid) {
-				ctx.drawImage(layer4, 0, 0, layer4.width, layer4.height, 0, 0, format.width, format.height);
+				ctx.drawImage(layer4, 0, 0, 1280, 720, 0, 0, format.width, format.height);
 			}
 			
 			frameLoop();
@@ -79,6 +94,7 @@ $( document ).ready(function() {
 	
 	
 	//Initialize 
+	setFormat("720p");
 	$("#mic0").addClass("activeMicrophone");  //auto-follow mode
 	$("#slide0").addClass("activeLayer");
 	$("#overlay0").addClass("activeLayer");
