@@ -1,3 +1,7 @@
+html {
+	height: 100%;
+}
+
 body {
 	background: url("./grain.png"), linear-gradient(to bottom, #424F5A, #6A7B86);
 	margin: 0px;
@@ -5,14 +9,71 @@ body {
 }
 
 .workspace {
-	position: relative;
-	width: 80%;
-	margin: 25px auto;
-	vertical-align: top;
+	display: block;
+	position: absolute;
+	width: 90%;
+	top: 5%;
+	left: 5%;
 }
+
+/* Adjust Tab Size */
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor { padding: 0.2em 1.5em; }
+/*.ui-helper-reset { font-size: 80%; }  */
+
+
+.programContainer {
+	display: inline-block;
+	position: relative;
+	width: 60%;
+	top: 1%;
+	left: 0;
+}
+
+#controlContainerA, #controlContainerB {
+	display: inline-block;
+	position: relative;
+	width: 18%;
+	top: -5%;
+	float: right;
+	margin-bottom: 1vh;
+}
+
+.streamControlContainer {
+	position: absolute;
+	top: 0.8vh;
+	left: 64%;
+}
+
+.streamControl {
+	font-size: 80%;
+	background-color: hsla(0, 0%, 80%, 1);
+	border: black 2px solid;
+}
+
+
+.masterMediaContainer {
+	display: inline-block;
+	position: relative;
+	width: 60%;
+}
+
+.mediaContainer { 
+	clear: right;
+	margin-top: 1vh;
+}
+
+#media > .mediaContainer {
+	margin-top: 3vh;
+}
+
+
 
 .hidden {
 	display: none;
+}
+
+.aspect {
+	display: inherit;
 }
 
 .AR16x9 {
@@ -31,13 +92,6 @@ body {
 	padding-top: 75%;
 }
 
-
-.programContainer{
-	display: inline-block;
-	position: relative;
-	width: 75%;
-}
-
 .program {
 	position: absolute;
 	top: 0;
@@ -54,30 +108,31 @@ body {
 	border-radius: 2%;
 }
 
-.slide, .overlay, .clip {
+
+.slide,  .overlay,  .clip, .composite {
 	display: inline-block;
-	width: 15.35%;
-	margin: 2% auto 0 auto;
+	box-sizing: border-box;
+	width: 16%;
+	margin: 0 auto;
 	border: transparent 3px solid;	
 	border-radius: 5%;
 }
 
-.overlay {
+.slideSrc, .overlaySrc, .clipSrc {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 16%;
+	margin: 0 auto;
+	border: transparent 3px solid;	
+	border-radius: 5%;
+}
+
+.overlay, .overlaySrc, composite{
 	background-color: hsla(0,0%,50%,0.5);
 }
 
-.activeLayer {
-	border: hsla(142,100%,70%,1) 3px solid;
-}
 
 
-#cameraSet{
-	display: inline-block;
-	position: relative;
-	width: 21%;
-	padding-left: 2%;
-	top: -5vh;
-}
 
 .cameraContainer{
 	display: inline-block;
@@ -103,60 +158,90 @@ body {
 }
 
 
-.activeCamera {
-	border: hsla(142, 100%, 60% ,1) 4px solid;
+#qrWindow {
+	display: inline-block;
+	position: relative;
+	margin: 5vh;
+	height: 50vh;
+	width:  50vh;
+	float: right;
+}
+
+#qrWindow :first-child {
+	border: 25px white solid;
+}
+
+.formatContainer {
+	display: inline-block;
+	position: relative;
+	margin-top: 5vh;
+	float: left;
+	clear: left;
+}
+
+
+.format, .connection{  /* see also: .ui-widget button */
+	display: inline-block;
+	position: relative;
+	background-color: hsla(0, 0%, 80%, 1);
+	border: black 3px solid;
+	}
+
+.microphone {  /* see also: .ui-widget button */
+	position: relative;
+	display: inline-block;
+	margin-top: 1vh;
+	margin-left: 0.2vw;
+	background-color: hsla(0, 0%, 80%, 1);
+	border: black 3px solid;
 }
 
 .micContainer {
 	display: inline-block;
 	position: relative;
-	width: 100%;
+	margin: 0 auto;
 }
 
-/* 
-#mic0 {left: 2%;}
-#mic1 {left: 35%;}
-#mic2 {left: 68%;}  */
+.micContainer :first-child {
+	margin-left: 0.5vw;
+}
 
-#fmt240 {left: 2%;}
-#fmt360 {left: 35%;}
-#fmt720 {left: 68%;}
+label {
+	font-weight: bolder;
+	font-size: 1vw;
+}
 
-.microphone, .format {
-	position: relative;
-	display: inline-block;
-	top: 5px;
-	bottom: 0;
-	margin: 2vh, auto;
-	width: 30%;
-	height: 5vh;
-	background-color: hsla(0, 0%, 80%, 1);
-	border: black 3px solid;
-	border-radius: 10%;
+#address {
+	width: 30vw;
+}
+
+.ui-widget input {
+	font-size: 1vw;
+}
+
+.ui-widget button {
+	font-size: 1vw;
 	text-align: center;
 	font-weight: bolder;
 	vertical-align: middle;
+	border-radius: 10%;
 }
 
-.formatContainer {
-	display: inline-block;
-	position: static;
-	width: 20vw;
+.activeCamera {
+	border: hsla(142, 100%, 60% ,1) 4px solid;
 }
 
-.format > p { 
-	margin-top: 8px;
+.activeLayer {
+	border: hsla(142,100%,60%,1) 3px solid;
 }
 
-.activeMicrophone, .activeFormat {
+.activeButtonGreen{
 	border: hsla(142, 100%, 70%, 1) 3px solid;
 	background-color: hsla(142, 80%, 50%, 1);
 }
 
-.mediaContainer {
-	display: inline-block;
-	position: relative;
-	width: 75%;
+.activeButtonRed {
+	border: hsla(0, 100%, 80%, 1) 2px solid;
+	color: hsla(0, 100%, 80%, 1);
+	background-color: hsla(0, 80%, 40%, 1);
 }
-
-

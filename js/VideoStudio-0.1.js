@@ -21,49 +21,75 @@ $( document ).ready(function() {
 	var slide = 0;
 	var overlay = 0;
 	var lastCamera = -1;
+	var stream = false;
+	var recordRemote = false;
+	var recordLocal = false;
+	var aspectRatio = 16/9;
+	var mediapath = "./media/16x9/";
 	
 	var canvas = document.getElementById('pgmCanvas');
 	var ctx = canvas.getContext("2d");
+	canvas.mozOpaque = true;
+	
 	var layer1 = document.getElementById('layer1');
 	layer1.valid = false;
 	var layer2 = document.getElementById('layer2');
-	var layer4 = document.getElementById('layer4');
-	layer4.valid = false;
+	var layer3 = document.getElementById('layer3');
+	layer3.valid = false;
 	
 	var format = new Object();
 	
-	function setFormat(theFormat) {
-		
-		format.name = theFormat;
-		
-		switch (format.name) {
-			case "360p":
-				format.width = 640;
-				format.height = 360;
-			break;
-			
-			case "1080p":
-				format.width = 1920;
-				format.height = 1080;
-			break;
-				
-			default:  // 720p
-				format.width = 1280;
-				format.height = 720;
-			break;
-		}
+	
+	function setFormat(theFormat) {	
+		format.height = theFormat;
+		format.width = parseInt((format.height * aspectRatio), 10);
+		format.mediaWidth = parseInt((720 * aspectRatio), 10);
 		$(".layer").attr("height", format.height);
 		$(".layer").attr("width", format.width);
+		canvas.height = format.height;
+		canvas.width  = format.width;
+		$("#fmt"+theFormat).addClass("activeButtonGreen");
+		console.log(format.width, format.height, format.mediaWidth);
 	}  
 	
-	var frame = 0;
+	
+	function setAspect(theRatio) {
+		
+		if (theRatio == "4/3") {
+
+			aspectRatio = 4/3;
+			$(".aspect").removeClass("AR16x9");
+			$(".aspect").addClass("AR4x3");
+			mediapath = "./media/4x3/";
+			
+			
+		} else {
+			
+			aspectRatio = 16/9;
+			$(".aspect").removeClass("AR4x3");
+			$(".aspect").addClass("AR16x9");
+			mediapath = "./media/16x9/";
+		}
+		
+		
+		console.log(theRatio, aspectRatio, format.height);
+		setFormat(format.height);
+		
+		for (var i=1; i<7; i++) {    // This is a temporary hack - media source paths and names should be stored in local storage.
+			$("#slide"+i).attr("src", mediapath + "slides/slide"+i+".png");
+			$("#slideSrc"+i).attr("src", mediapath + "slides/slide"+i+".png");
+			$("#overlay"+i).attr("src", mediapath + "overlays/overlay"+i+".png");
+			$("#overlaySrc"+i).attr("src", mediapath + "overlays/overlay"+i+".png");
+		
+		}
+	}
 	
 	layer1.onload = function(){
 			layer1.valid = true;
 	};
 	
-	layer4.onload = function(){
-			layer4.valid = true;
+	layer3.onload = function(){
+			layer3.valid = true;
 	};
 	
 	function drawFrame(){
@@ -71,42 +97,39 @@ $( document ).ready(function() {
 			ctx.clearRect(0, 0, format.width, format.height);
 			
 			if (layer1.valid) {
-				ctx.drawImage(layer1, 0, 0, 1280, 720, 0, 0, format.width, format.height);
+				ctx.drawImage(layer1, 0, 0, format.mediaWidth, 720, 0, 0, format.width, format.height);
 			}
 			
 			if (layer2.readyState === layer2.HAVE_ENOUGH_DATA) {
 				ctx.drawImage(layer2, 0, 0, layer2.videoWidth, layer2.videoHeight, 0, 0, format.width, format.height);
 			}
 			
-			if (layer4.valid) {
-				ctx.drawImage(layer4, 0, 0, 1280, 720, 0, 0, format.width, format.height);
+			if (layer3.valid) {
+				ctx.drawImage(layer3, 0, 0, format.mediaWidth, 720, 0, 0, format.width, format.height);
 			}
 			
-			frameLoop();
+			requestAnimationFrame(drawFrame);
 	}
 
-	function frameLoop () {
-		frame++;
-		requestAnimationFrame(drawFrame);
-	}
 	
-	frameLoop();
+	drawFrame();
 	
 	
 	//Initialize 
-	setFormat("720p");
-	$("#mic0").addClass("activeMicrophone");  //auto-follow mode
-	$("#slide0").addClass("activeLayer");
-	$("#overlay0").addClass("activeLayer");
-	$("#clip0").addClass("activeLayer");
-
+	setFormat(720);
+	setAspect("16/9");
+	$("#fmt720").addClass("activeButtonGreen");
+	$("#aspect16x9").addClass("activeButtonGreen");
+	microphone = 0;
+	$("#mic0").addClass("activeButtonGreen");   //auto-follow mode
+	
 
 	$( ".microphone" ).click(function( event ) {
-		$(".microphone").removeClass("activeMicrophone");
+		$(".microphone").removeClass("activeButtonGreen");
 	});
 	
 	$( "#mic0, #mic1, #mic2").click(function (event) {
-		$(this).addClass("activeMicrophone");
+		$(this).addClass("activeButtonGreen");
 		//microphone = (this.attr("id")substring-after(this.attr("id"), "#mic");
 		microphone = parseInt($(this).attr("id").substr(3), 10);
 		
@@ -114,9 +137,67 @@ $( document ).ready(function() {
 		// if microphone == 0, then use audio from current camera
 	});
 	
+
+	
+	$( "#stream").click(function (event) {
+		if (!stream) {
+			$(this).addClass("activeButtonRed");
+			stream = true;
+			//code here to turn stream on.
+		} else {
+			stream = false;
+			$(this).removeClass("activeButtonRed");
+			// code here to turn stream off.	
+		}
+	});
+	
+	$( "#recordLocal").click(function (event) {
+		if (!recordLocal) {
+			$(this).addClass("activeButtonRed");
+			recordLocal = true;
+			//code here to start local recording.
+		} else {
+			$(this).removeClass("activeButtonRed");
+			recordLocal = false;
+			// code here to end local recording.	
+		}
+	});
+
+	$( "#recordRemote").click(function (event) {
+		if (!recordRemote) {
+			$(this).addClass("activeButtonRed");
+			recordRemote = true;
+			//code here to start remote recording.
+		} else {
+			$(this).removeClass("activeButtonRed");
+			recordRemote = false;
+			// code here to end remote recording.	
+		}
+	});
+	
+	
+	
+	$( ".format" ).click(function( event ) {
+		var element = $(this);
+		$(".format").removeClass("activeButtonGreen");
+		element.addClass("activeButtonGreen");
+		setFormat(parseInt(element.attr("data-format"),10));
+	});
+	
+	
+	$( ".btnAspect" ).click(function( event ) {
+		var element = $(this);
+		$(".btnAspect").removeClass("activeButtonGreen");
+		element.addClass("activeButtonGreen");
+		setAspect(element.attr("data-aspect"));
+	});
+
+	
 	$( ".cameraShot" ).click(function( event ) {
 		$(".cameraShot").removeClass("activeCamera");
 	});
+	
+
 	
 	
 	$( "#cam1, #cam2, #cam3").click(function( event ) {
@@ -156,7 +237,7 @@ $( document ).ready(function() {
 
 	
 	$(".overlay").on("click", function(e){				//overlay handler
-		layer4.valid = false;							//mark layer as empty until the next load completes.
+		layer3.valid = false;							//mark layer as empty until the next load completes.
 		var element = $(this);
 		var thisImage = element.attr("src");
 		if (element.hasClass("activeLayer")) {			//Is already active so de-activate all.
@@ -164,12 +245,20 @@ $( document ).ready(function() {
 		} else {
 			$(".overlay").removeClass("activeLayer");	//clear the green borders
 			element.addClass("activeLayer");			//make this overlay active
-			layer4.src = thisImage;						//set overlay layer source to this image
+			layer3.src = thisImage;						//set overlay layer source to this image
         }
 	});
 	
 	
-
+	$(".connection").on("click", function(e){
+		var element = $(this);
+		$(".connection").removeClass("activeButtonGreen");
+		$("#qrWindow").html(""); //clear any existing QR canvas
+		element.addClass("activeButtonGreen");
+		var QRdata = $("#address").val() + "?input='"+element.attr("data-connect")+"'";
+		console.log(QRdata);
+		$("#qrWindow").qrcode(QRdata); //Show the new QR code on a canvas
+	});
 	
 
 });

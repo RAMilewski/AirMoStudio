@@ -19,113 +19,188 @@
 	<body>
 		
 		<div class="hidden">
-			<img id="layer1" class="layer" height="720" width="1280" src="./css/blank.png"/>
-			<video id="layer2" class="layer" height="720" width="1280" autoplay crossorigin="use-credentials" src="./clips/blank.mp4"></video>
-			<canvas id="layer3" class="layer" height="720" width="1280"></canvas>
-			<img id="layer4" class="layer" height="720" width="1280" src="./css/blank.png"/>
+			<img id="layer1" class="layer" height="720" width="1280"/>
+			<video id="layer2" class="layer" height="720" width="1280" autoplay crossorigin="use-credentials"></video>
+			<img id="layer3" class="layer" height="720" width="1280"/>
+			<img id="layer4" class="layer" height="720" width="1280"/>
 			<img id="layer5" class="layer" height="720" width="1280"/>
 		</div>
 		
 		<div id="tabs" class="workspace">
 		 
 			<ul>    
-				<li><a href="#switching">Swtiching</a></li>    
+				<li><a href="#control">Control</a></li>    
 				<li><a href="#media">Media</a></li>    
 				<li><a href="#settings">Settings</a></li>  
 			</ul>  
 			
 			
-			<div id="switching">
+			<div id="control">
+				
+				<div class="streamControlContainer">
+					<button id="stream" class="streamControl"> AirMo Stream </button>
+					<button id="recordRemote" class="streamControl"> Remote Record </button>
+					<button id="recordLocal" class="streamControl"> Local Record </button>
+				</div>
+				
 				<div class="programContainer" >
-					<div class="AR16x9">
+					<div class="aspect AR16x9">
 						<div class="program" id="program">
 							<canvas id="pgmCanvas" class="layer" height="720" width="1280"></canvas>
 						</div>
 					</div>
 				</div>
 				
-				<div id="cameraSet">
+				<div id="controlContainerA">  <!-- Control containers float right -->
+										
 					
+				</div>
+				
+				
+				<div id="controlContainerB">  
 										
 					<div class="cameraContainer">
-						<div class="AR16x9">
+						<div class="aspect AR16x9">
 							<div id="cam1container" class="camera">
-								<video class="cameraShot" id="cam1" crossorigin="use-credentials" src="./clips/ChryslerBldg.mp4"></video>
+								<video class="cameraShot" id="cam1" crossorigin="use-credentials" src="./media/16x9/clips/ChryslerBldg.mp4"></video>
 							</div>
 						</div>
 					</div>
 					
 					<div class="cameraContainer">
-						<div class="AR16x9">
+						<div class="aspect AR16x9">
 							<div id="cam2container" class="camera">
-								<video class="cameraShot" id="cam2" crossorigin="use-credentials"   src="./clips/Alexanderplatz.mp4"></video>
+								<video class="cameraShot" id="cam2" crossorigin="use-credentials"   src="./media/16x9/clips/Alexanderplatz.mp4"></video>
 							</div>
 						</div>
 					</div>
 					
 					<div class="cameraContainer">
-						<div class="AR16x9">
+						<div class="aspect AR16x9">
 							<div id="cam3container" class="camera">
-								<video class="cameraShot" id="cam3" crossorigin="use-credentials"   src="./clips/BinaryScrollLeft.mp4"></video>
+								<video class="cameraShot" id="cam3" crossorigin="use-credentials"   src="./media/16x9/clips/BinaryScrollLeft.mp4"></video>
 							</div>
 						</div>
 					</div>
 					
 					<div class="micContainer">
 							<button id="mic0" class="microphone">Follow</button>
-							<button id="mic1" class="microphone">Mic 1</button>
-							<button id="mic2" class="microphone">Mic 2</button>
+							<button id="mic1" class="microphone">Mic&nbsp;1</button>
+							<button id="mic2" class="microphone">Mic&nbsp;2</button>
 					</div>
 				</div>
-							
-				<div id="slideContainer" class="mediaContainer">
-					<img class="slide" id="slide1" src="./slides/slide1.png">
-					<img class="slide" id="slide2" src="./slides/slide2.png">
-					<img class="slide" id="slide3" src="./slides/slide3.png">
-					<img class="slide" id="slide4" src="./slides/slide4.png">
-					<img class="slide" id="slide5" src="./slides/slide5.png">
-					<img class="slide" id="slide6" src="./slides/slide6.png">
+				
+				
+				
+				
+				<div class="masterMediaContainer">
+					
+					<div id="slideContainer" class="mediaContainer">
+						<img class="slide" id="slide1" >
+						<img class="slide" id="slide2" >
+						<img class="slide" id="slide3" >
+						<img class="slide" id="slide4" >
+						<img class="slide" id="slide5" >
+						<img class="slide" id="slide6" >
+					</div>
+					
+					<!--<div id="clipContainer" class="mediaContainer">
+						<video class="clip" id="clip1" crossorigin="use-credentials" ></video>
+						<video class="clip" id="clip2" crossorigin="use-credentials" ></video>
+						<video class="clip" id="clip3" crossorigin="use-credentials" ></video>
+						<video class="clip" id="clip4" crossorigin="use-credentials" ></video>
+						<video class="clip" id="clip5" crossorigin="use-credentials" ></video>
+						<video class="clip" id="clip6" crossorigin="use-credentials" ></video>
+					
+					</div>
+					-->
+					
+					<div id="overlayContainer" class="mediaContainer">
+						<img class="overlay" id="overlay1" >
+						<img class="overlay" id="overlay2" >
+						<img class="overlay" id="overlay3" >
+						<img class="overlay" id="overlay4" >
+						<img class="overlay" id="overlay5" >
+						<img class="overlay" id="overlay6" >
+					</div>
+				</div>
+			</div>
+			
+			<div id="media">  <!-- This div is the Media tab -->
+				
+				<div id="slideSrcContainer" class="mediaContainer">
+					<label>Backgrounds</label><br/>
+					<img class="slideSrc" id="slideSrc1" >
+					<img class="slideSrc" id="slideSrc2" src="./media/16x9/slides/slide2.png">
+					<img class="slideSrc" id="slideSrc3" src="./media/16x9/slides/slide3.png">
+					<img class="slideSrc" id="slideSrc4" src="./media/16x9/slides/slide4.png">
+					<img class="slideSrc" id="slideSrc5" src="./media/16x9/slides/slide5.png">
+					<img class="slideSrc" id="slideSrc6" src="./media/16x9/slides/slide6.png">
 				</div>
 				
-				<!--<div id="clipContainer" class="mediaContainer">
-					<video class="clip" id="clip0" crossorigin="use-credentials"   src=""></video>
-					<video class="clip" id="clip1" crossorigin="use-credentials"   src="./clips/ChryslerBldg.mp4"></video>
-					<video class="clip" id="clip2" crossorigin="use-credentials"   src="./clips/MapScroll.mp4"></video>
-					<video class="clip" id="clip3" crossorigin="use-credentials"   src="./clips/PurpleFlux-27.mp4"></video>
-					<video class="clip" id="clip4" crossorigin="use-credentials"   src="./clips/Alexanderplatz.mp4"></video>
-					<video class="clip" id="clip5" crossorigin="use-credentials"   src="./clips/BinaryScrollLeft.mp4"></video>
+				<!--<div id="clipSrcContainer" class="mediaContainer">
+					<video class="clipSrc" id="clipSrc1" crossorigin="use-credentials" ></video>
+					<video class="clipSrc" id="clipSrc2" crossorigin="use-credentials" ></video>
+					<video class="clipSrc" id="clipSrc3" crossorigin="use-credentials" ></video>
+					<video class="clipSrc" id="clipSrc4" crossorigin="use-credentials" ></video>
+					<video class="clipSrc" id="clipSrc5" crossorigin="use-credentials" ></video>
+					<video class="clipSrc" id="clipSrc6" crossorigin="use-credentials" ></video>
 				</div>
 				-->
 				
-				<div id="overlayContainer" class="mediaContainer">
-					<img class="overlay" id="overlay1" src="./overlays/overlay1.png">
-					<img class="overlay" id="overlay2" src="./overlays/overlay2.png">
-					<img class="overlay" id="overlay3" src="./overlays/overlay3.png">
-					<img class="overlay" id="overlay4" src="./overlays/overlay4.png">
-					<img class="overlay" id="overlay5" src="./overlays/overlay5.png">
-					<img class="overlay" id="overlay6" src="./overlays/overlay6.png">
+				<div id="overlaySrcContainer" class="mediaContainer">
+					<label>Overlays</label><br/>
+					<img class="overlaySrc" id="overlaySrc1" src="./media/16x9/overlays/overlay1.png">
+					<img class="overlaySrc" id="overlaySrc2" src="./media/16x9/overlays/overlay2.png">
+					<img class="overlaySrc" id="overlaySrc3" src="./media/16x9/overlays/overlay3.png">
+					<img class="overlaySrc" id="overlaySrc4" src="./media/16x9/overlays/overlay4.png">
+					<img class="overlaySrc" id="overlaySrc5" src="./media/16x9/overlays/overlay5.png">
+					<img class="overlaySrc" id="overlaySrc6" src="./media/16x9/overlays/overlay6.png">
 				</div>
-			</div>
-			
-			<div id="media">
+
 				
 			</div>
 			
-			<div id="settings">
+			<div id="settings">   <!-- This div is the Settings tab -->
+			
+				<div id="qrWindow">
+				</div>
+			
 				<div class="formatContainer">
-					<button id="fmt240" class="format" data-format="240p">240p</button>
-					<button id="fmt360" class="format" data-format="360p">360p</button>
-					<button id="fmt720" class="format" data-format="720p">720p</button>
+					<label>Output Format: </label>
+					<button id="fmt180" class="format" data-format="180">180p</button>
+					<button id="fmt270" class="format" data-format="270">270p</button>
+					<button id="fmt360" class="format" data-format="360">360p</button>
+					<button id="fmt540" class="format" data-format="540">540p</button>
+					<button id="fmt720" class="format" data-format="720">720p</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id="aspect16x9" class="btnAspect" data-aspect="16/9"> 16:9 </button>
+					<button id="aspect4x3"  class="btnAspect" data-aspect="4/3"> 4:3 </button>
 				</div>	
-				<p> This is a paragraph.</p>			
+				
+				
+				
+				<div class="formatContainer">
+					<label>Local Camera IP: </label>
+					<input id="address" type="url" value="https://192.168.0.10">	
+				</div>
+				
+				<div class="formatContainer">
+					<label>Connections: </label>
+					<button id="connectCam1" class="connection" data-connect="cam1" > Camera 1 </button>
+					<button id="connectCam2" class="connection" data-connect="cam2" > Camera 2 </button>
+					<button id="connectCam3" class="connection" data-connect="cam3" > Camera 3 </button>
+					<button id="connectMic1" class="connection" data-connect="mic1" > Microphone 1 </button>
+					<button id="connectMic2" class="connection" data-connect="mic2" > Microphone 2 </button>
+					
+				</div>	
+					
 			</div>
 			
 		</div>
-		
-	
 
 			<script src="./js/jquery-2.1.3.min.js"></script>
-			<script src="./js/jquery-ui-1.11.2.Darkness/jquery-ui.js"></script>
+			<script src="./js/jquery-ui-1.11.2.Overcast/jquery-ui.min.js"></script>
 			<script src="./js/jquery.qrcode.min.js"></script>
 			<script src="./js/VideoStudio-0.1.js"></script>
 	
