@@ -98,14 +98,14 @@ body {
 	left: 0;
 	right: 0;
 	bottom: 0;
+	background-color: black;
 	border: black 4px solid;
-	border-radius: 2%;
+	border-radius: 2vh;
 }
 
 .layer  {
 	width: 100%;
 	height: 100%;
-	border-radius: 2%;
 }
 
 
@@ -244,4 +244,9 @@ label {
 	border: hsla(0, 100%, 80%, 1) 2px solid;
 	color: hsla(0, 100%, 80%, 1);
 	background-color: hsla(0, 80%, 40%, 1);
+}
+
+#about img {
+	width: 80%;
+	margin: 0 auto;
 }
